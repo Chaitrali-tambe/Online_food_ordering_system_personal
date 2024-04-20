@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Home Page</title>
+    <title>Items Display Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com"  />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet" />
@@ -183,7 +183,7 @@
                         </li>
 
                         <li class="nav-item me-5" >
-                            <a class="nav-link active fs-5" style="color:var(--light-yellow);" href="#">Home</a>
+                            <a class="nav-link active fs-5" style="color:var(--light-yellow);" href="Home_page.aspx">Home</a>
                         </li>
             
                         <li class="nav-item dropdown">
@@ -207,9 +207,12 @@
                         </li>
 
                         <li class="nav-item me-5 fs-5">
-                            <a class="nav-link active" style="color:var(--light-yellow);" href="#">Cart</a>
+                            <a class="nav-link active h-100" style="color:var(--light-yellow);" href="#">
+                                <svg style="width:fit-content" class="h-100" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                                </svg>
+                            </a>
                         </li>
-
 
 
                     </ul>
@@ -262,9 +265,10 @@
                             <div class="card my-2 mx-2" style="width: 18rem;">
                               <img class="card-img-top mx-auto" style="height:180px; width:230px;" src="<%# Eval("PROD_IMAGE")%>" alt="Card image cap">
                               <div class="card-body">
-                                <h5 class="card-title" id="product_name" runat="server"><%# Eval("PROD_NAME") %></h5>
+                                <asp:Label class="card-title fw-bold fs-4" id="product_name" runat="server"><%# Eval("PROD_NAME") %></asp:Label>
                                 <p class="card-text">₹ <%# Eval("PROD_PRICE") %></p>
-                                <a href="#" class="btn btn-danger opacity-75 w-100">Add to Cart</a>
+                                <%--<a href="#" class="btn btn-danger opacity-75 w-100" onclick="Add_to_Cart">Add to Cart</a>--%>
+                                <asp:Button runat="server" id="add_to_cart_btn" class="btn btn-danger opacity-75 w-100" Text="Add to Cart" />
                               </div>
                             </div>
                             <%--<table >

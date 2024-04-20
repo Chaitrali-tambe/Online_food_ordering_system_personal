@@ -13,6 +13,7 @@ using TextBox = System.Web.UI.WebControls.TextBox;
 using Label = System.Web.UI.WebControls.Label;
 using System.Drawing;
 using Image = System.Drawing.Image;
+using Button = System.Web.UI.WebControls.Button;
 
 namespace WebApplication2
 
@@ -90,10 +91,36 @@ namespace WebApplication2
             //con.Close();
         }
 
+        protected void add_to_cart_btn_Click(object sender, EventArgs e)
+        {
+            Label prod_name = (Label)DL_display.FindControl("product_name");
+
+            //DataListItem item = (DataListItem)(sender as Button).NamingContainer;
+            //string txtId = ((Label)item.FindControl("PROD_NAME")).Text.Trim();
+            //con.Open();
+            Label name = (Label)DL_display.Items[e.Item.ItemIndex].FindControl("product_name");
+            //query = "SELECT * FROM FOOD WHERE PROD_NAME = '" + prod_name.Text + "'";
+            //query = "SELECT * FROM FOOD where prod_name = '" + ;
+            //cmd = new SqlCommand(query, con);
+            ////cmd.ExecuteNonQuery();
+            SqlDataAdapter adapt = new SqlDataAdapter(query, con);
+            DataTable dt = new DataTable();
+            adapt.Fill(dt);
+
+        }
+
         protected void Add_item_Click(object sender, EventArgs e)
         {
             Response.Redirect("Add_Item.aspx");
         }
+
+       
+
+        //public void Add_to_Cart()
+        //{
+        //    string prod_name = DL_display.FindControl(product_name);
+        //    string prod_name = DL_display.FindControl("product_name");
+        //}
 
         //public string DisplayFirstName()
         //{
